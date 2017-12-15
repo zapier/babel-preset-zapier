@@ -1,24 +1,25 @@
 /* eslint-env jest */
 const babel = require('babel-core');
-const omit = require('lodash.omit');
 const buildPreset = require('../index');
 
-const transform = (code, options, fakeEnvironment) => {
+const transform = (code, options) => {
   const presetConfig = buildPreset(null, options);
-
-  const babelConfig = Object.assign(
-    presetConfig,
-    {
-      babelrc: false, // don't use .babelrc
-      env: omit(presetConfig.env, 'test'), // get rid of test env, otherwise we can't test non-test env scenarios
-    },
-    presetConfig.env[fakeEnvironment] || {}
-  );
+  const babelConfig = Object.assign(presetConfig, {
+    babelrc: false, // don't use .babelrc
+  });
 
   return babel.transform(code, babelConfig).code;
 };
 
 describe('babel-preset-zapier', () => {
+  beforeEach(() => {
+    process.env.BABEL_ENV = 'development';
+  });
+
+  afterEach(() => {
+    delete process.env.BABEL_ENV;
+  });
+
   it("doesn't compile ES modules to commonjs by default", () => {
     const code = `
       import Foo from 'foo';
@@ -78,17 +79,27 @@ describe('babel-preset-zapier', () => {
     expect(transform(code)).toMatchSnapshot();
   });
 
-  it('strips proptypes when in prod env', () => {
-    const code = `
-      const Baz = (props) => (
-        <div {...props} />
-      );
+  describe('when on production env', () => {
+    beforeEach(() => {
+      process.env.BABEL_ENV = 'production';
+    });
 
-      Baz.propTypes = {
-        className: PropTypes.string
-      };
-    `;
+    afterEach(() => {
+      delete process.env.BABEL_ENV;
+    });
 
-    expect(transform(code, {}, 'production')).toMatchSnapshot();
+    it('strips proptypes when in prod env', () => {
+      const code = `
+        const Baz = (props) => (
+          <div {...props} />
+        );
+
+        Baz.propTypes = {
+          className: PropTypes.string
+        };
+      `;
+
+      expect(transform(code)).toMatchSnapshot();
+    });
   });
 });

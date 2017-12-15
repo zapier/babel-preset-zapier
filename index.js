@@ -19,35 +19,28 @@ function getBuildTargets(options) {
 }
 
 function buildPreset(context, options) {
+  const env = process.env.BABEL_ENV || process.env.NODE_ENV;
   const buildTargets =
     (options && options.targets) || getBuildTargets(options || {});
+
+  const defaultModules = env === 'test' ? 'commonjs' : false;
+  const modules = options && options.modules ? 'commonjs' : defaultModules;
 
   return {
     presets: [
       require('babel-preset-env').default(null, {
-        modules: options && options.modules ? 'commonjs' : false,
+        modules,
         targets: buildTargets,
       }),
       require('babel-preset-react'),
       require('babel-preset-stage-2'),
     ],
 
-    env: {
-      production: {
-        plugins: [
-          require('babel-plugin-transform-react-remove-prop-types').default,
-        ],
-      },
-      test: {
-        presets: [
-          require('babel-preset-env').default(null, {
-            modules: 'commonjs',
-            targets: buildTargets,
-          }),
-        ],
-        plugins: [],
-      },
-    },
+    plugins: [
+      env === 'production'
+        ? require('babel-plugin-transform-react-remove-prop-types').default
+        : null,
+    ].filter(Boolean),
   };
 }
 

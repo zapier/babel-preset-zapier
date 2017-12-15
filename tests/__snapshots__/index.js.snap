@@ -42,7 +42,7 @@ exports[`babel-preset-zapier strips flow annotations 1`] = `
 function greet(name) {}"
 `;
 
-exports[`babel-preset-zapier strips proptypes when in prod env 1`] = `
+exports[`babel-preset-zapier when on production env strips proptypes when in prod env 1`] = `
 "
 var Baz = function Baz(props) {
   return React.createElement(\\"div\\", props);
