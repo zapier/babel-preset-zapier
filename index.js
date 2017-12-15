@@ -1,12 +1,5 @@
 'use strict';
 
-const modules = [
-  require('babel-plugin-transform-es2015-modules-commonjs'),
-  {
-    strict: false,
-  },
-];
-
 // See full breakdown here: http://bit.ly/2B3PCj3
 const defaultTargets = [
   'last 4 Chrome major versions',
@@ -20,7 +13,9 @@ const defaultTargets = [
 
 function getBuildTargets(options) {
   const additionalTargets = options.additionalTargets || [];
-  return defaultTargets.concat(additionalTargets);
+  return {
+    browsers: defaultTargets.concat(additionalTargets),
+  };
 }
 
 function buildPreset(context, options) {
@@ -30,18 +25,18 @@ function buildPreset(context, options) {
   return {
     presets: [
       require('babel-preset-env').default(null, {
-        modules: false,
+        modules: options && options.modules ? 'commonjs' : false,
         targets: buildTargets,
       }),
       require('babel-preset-react'),
       require('babel-preset-stage-2'),
     ],
 
-    plugins: options && options.modules ? [modules] : [],
-
     env: {
       production: {
-        plugins: [require('babel-plugin-transform-react-remove-prop-types')],
+        plugins: [
+          require('babel-plugin-transform-react-remove-prop-types').default,
+        ],
       },
       test: {
         presets: [
