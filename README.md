@@ -1,4 +1,4 @@
-# babel-preset-zapier
+# 🏯 babel-preset-zapier
 
 A babel preset for Zapier. Heavily inspired by [`babel-preset-airbnb`](https://github.com/airbnb/babel-preset-airbnb).
 
