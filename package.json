@@ -1,0 +1,30 @@
+{
+  "name": "babel-preset-zapier",
+  "version": "1.0.0",
+  "description": "A babel preset for Zapier",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zapier/babel-preset-zapier.git"
+  },
+  "keywords": [
+    "babel",
+    "javascript",
+    "zapier"
+  ],
+  "author": "Vitor Balocco <vitor.balocco@zapier.com>",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "eslint": "^4.13.1",
+    "eslint-plugin-zapier": "^4.0.0"
+  },
+  "dependencies": {
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.10",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1"
+  }
+}
