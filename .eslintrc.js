@@ -1,4 +1,4 @@
 module.exports = {
-  plugins: ['zapier'],
-  extends: ['plugin:zapier/prettier'],
+  plugins: ['@zapier/zapier'],
+  extends: ['plugin:@zapier/zapier/prettier'],
 };
