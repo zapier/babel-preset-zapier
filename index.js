@@ -1,5 +1,7 @@
 'use strict';
 
+const declare = require('@babel/helper-plugin-utils').declare;
+
 // See full breakdown here: http://bit.ly/2B3PCj3
 const defaultTargets = [
   'last 4 Chrome major versions',
@@ -8,18 +10,18 @@ const defaultTargets = [
   'last 3 Edge major versions',
   'last 4 Firefox major versions',
   'last 3 Safari versions',
-  'IE 11',
+  'IE 11'
 ];
 
-function getBuildTargets(options) {
+const getBuildTargets = options => {
   const additionalTargets = options.additionalTargets || [];
   return {
-    browsers: defaultTargets.concat(additionalTargets),
+    browsers: defaultTargets.concat(additionalTargets)
   };
-}
+};
 
-function buildPreset(context, options) {
-  const env = process.env.BABEL_ENV || process.env.NODE_ENV;
+const buildPreset = declare((api, options) => {
+  const env = process.env.NODE_ENV;
   const buildTargets =
     (options && options.targets) || getBuildTargets(options || {});
 
@@ -28,20 +30,20 @@ function buildPreset(context, options) {
 
   return {
     presets: [
-      require('babel-preset-env').default(null, {
+      require('@babel/preset-env').default(api, {
         modules,
-        targets: buildTargets,
+        targets: buildTargets
       }),
-      require('babel-preset-react'),
-      require('babel-preset-stage-2'),
+      require('@babel/preset-react'),
+      require('@babel/preset-stage-2')
     ],
 
     plugins: [
       env === 'production'
         ? require('babel-plugin-transform-react-remove-prop-types').default
-        : null,
-    ].filter(Boolean),
+        : null
+    ].filter(Boolean)
   };
-}
+});
 
 module.exports = buildPreset;

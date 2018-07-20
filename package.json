@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-zapier",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "A babel preset for Zapier",
   "main": "index.js",
   "repository": {
@@ -18,16 +18,17 @@
     "test": "jest"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.54",
     "@zapier/eslint-plugin-zapier": "^5.1.1",
-    "babel-core": "^6.26.0",
     "eslint": "^4.13.1",
     "jest": "^21.2.1"
   },
   "dependencies": {
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.10",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1"
+    "@babel/helper-plugin-utils": "^7.0.0-beta.54",
+    "@babel/preset-env": "^7.0.0-beta.54",
+    "@babel/preset-react": "^7.0.0-beta.54",
+    "@babel/preset-stage-2": "^7.0.0-beta.54",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.10"
   },
   "jest": {
     "testMatch": [
