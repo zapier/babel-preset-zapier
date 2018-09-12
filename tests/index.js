@@ -56,15 +56,6 @@ describe('babel-preset-zapier', () => {
     expect(transform(code)).toMatchSnapshot();
   });
 
-  // This test will break when we drop IE11 support
-  it('compiles `const` to `var`', () => {
-    const code = `
-      const foo = 'bar';
-    `;
-
-    expect(transform(code)).toMatchSnapshot();
-  });
-
   it('doesnt strip proptypes when not in prod env', () => {
     const code = `
       const Baz = (props) => (
