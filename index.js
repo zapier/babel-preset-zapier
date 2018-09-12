@@ -8,7 +8,6 @@ const defaultTargets = [
   'last 3 Edge major versions',
   'last 4 Firefox major versions',
   'last 3 Safari versions',
-  'IE 11',
 ];
 
 function getBuildTargets(options) {
