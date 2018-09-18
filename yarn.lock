@@ -78,6 +78,10 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
+"@zapier/browserslist-config-zapier@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@zapier/browserslist-config-zapier/-/browserslist-config-zapier-1.0.2.tgz#ba55896674e99d05c2841938b38768079dddc40a"
+
 "@zapier/eslint-plugin-zapier@^5.1.1":
   version "5.2.0"
   resolved "http://registry.npmjs.org/@zapier/eslint-plugin-zapier/-/eslint-plugin-zapier-5.2.0.tgz#6cc691ee619a6106a926abc079712bad4caac615"
