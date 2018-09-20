@@ -1,31 +1,42 @@
-'use strict';
-
+const declare = require('@babel/helper-plugin-utils').declare;
 const buildTargets = require('@zapier/browserslist-config-zapier');
 
-function buildPreset(context, options) {
+module.exports = declare(api => {
   const env = process.env.BABEL_ENV || process.env.NODE_ENV;
 
-  const defaultModules = env === 'test' ? 'commonjs' : false;
-  const modules = options && options.modules ? 'commonjs' : defaultModules;
+  // Make sure the consumer is using babel v7
+  api.assertVersion(7);
+  // Tell babel we can cache the resolution of this config based on the value of `env`.
+  api.cache.using(() => env);
 
   return {
     presets: [
-      require('babel-preset-env').default(null, {
-        modules,
-        targets: {
-          browsers: buildTargets,
-        }
-      }),
-      require('babel-preset-react'),
-      require('babel-preset-stage-2'),
+      [
+        '@babel/preset-env',
+        {
+          modules: 'commonjs',
+          // Bring this back once `zapier/zapier` can handle non-commonjs imports
+          // modules: env === 'test' ? 'commonjs' : false,
+          targets: {
+            browsers: buildTargets,
+          },
+        },
+      ],
+      '@babel/preset-react',
+      '@babel/preset-flow',
     ],
-
     plugins: [
-      env === 'production'
-        ? require('babel-plugin-transform-react-remove-prop-types').default
-        : null,
-    ].filter(Boolean),
+      '@babel/plugin-syntax-dynamic-import',
+      '@babel/plugin-proposal-object-rest-spread',
+      '@babel/plugin-proposal-class-properties',
+    ],
+    env: {
+      test: {
+        plugins: ['dynamic-import-node'],
+      },
+      production: {
+        plugins: ['transform-react-remove-prop-types', 'graphql-tag'],
+      },
+    },
   };
-}
-
-module.exports = buildPreset;
+});

@@ -1,14 +1,11 @@
 /* eslint-env jest */
-const babel = require('babel-core');
-const buildPreset = require('../index');
+const babel = require('@babel/core');
 
-const transform = (code, options) => {
-  const presetConfig = buildPreset(null, options);
-  const babelConfig = Object.assign(presetConfig, {
+const transform = code => {
+  return babel.transformSync(code, {
+    configFile: require.resolve('../index'),
     babelrc: false, // don't use .babelrc
-  });
-
-  return babel.transform(code, babelConfig).code;
+  }).code;
 };
 
 describe('babel-preset-zapier', () => {
@@ -20,7 +17,8 @@ describe('babel-preset-zapier', () => {
     delete process.env.BABEL_ENV;
   });
 
-  it("doesn't compile ES modules to commonjs by default", () => {
+  // Skip this test until `zapier/zapier` can handle ES modules natively
+  xit("doesn't compile ES modules to commonjs by default", () => {
     const code = `
       import Foo from 'foo';
     `;
@@ -28,12 +26,12 @@ describe('babel-preset-zapier', () => {
     expect(transform(code)).toMatchSnapshot();
   });
 
-  it('compiles to commonjs modules if `modules: true` option is passed', () => {
+  it('compiles to commonjs modules', () => {
     const code = `
       import Foo from 'foo';
     `;
 
-    expect(transform(code, { modules: true })).toMatchSnapshot();
+    expect(transform(code)).toMatchSnapshot();
   });
 
   it('strips flow annotations', () => {
