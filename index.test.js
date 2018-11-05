@@ -3,7 +3,7 @@ const babel = require('@babel/core');
 
 const transform = code => {
   return babel.transformSync(code, {
-    configFile: require.resolve('../index'),
+    configFile: require.resolve('./index'),
     babelrc: false, // don't use .babelrc
   }).code;
 };
