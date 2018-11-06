@@ -14,9 +14,7 @@ module.exports = declare(api => {
       [
         '@babel/preset-env',
         {
-          modules: 'commonjs',
-          // Bring this back once `zapier/zapier` can handle non-commonjs imports
-          // modules: env === 'test' ? 'commonjs' : false,
+          modules: env === 'test' ? 'commonjs' : false,
           targets: {
             browsers: buildTargets,
           },
