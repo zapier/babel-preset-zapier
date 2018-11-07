@@ -31,6 +31,18 @@ module.exports = declare(api => {
       '@babel/plugin-proposal-class-properties',
     ],
     env: {
+      development: {
+        plugins: [
+          [
+            'emotion',
+            {
+              autoLabel: true,
+              labelFormat: '[filename]--[local]',
+              sourceMap: true,
+            },
+          ],
+        ],
+      },
       test: {
         plugins: ['dynamic-import-node'],
       },
