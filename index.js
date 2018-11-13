@@ -27,9 +27,6 @@ module.exports = declare(api => {
       '@babel/plugin-syntax-dynamic-import',
       '@babel/plugin-proposal-object-rest-spread',
       '@babel/plugin-proposal-class-properties',
-      // Need to force-transform default parameter syntax. See: https://github.com/babel/babel/issues/8349
-      // Once the fix for that issue lands, we can upgrade `babel-preset-env` and get rid of this
-      '@babel/plugin-transform-parameters',
       // Need to force-transform classes due to an Edge bug. See: https://github.com/zapier/zapier/pull/21319#issuecomment-437871079
       // Once the fix for this lands on Edge, we can get rid of this (but make sure to test in older versions of Edge first!).
       '@babel/plugin-transform-classes',
