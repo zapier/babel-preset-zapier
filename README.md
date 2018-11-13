@@ -2,6 +2,10 @@
 
 A babel preset for Zapier. Heavily inspired by [`babel-preset-airbnb`](https://github.com/airbnb/babel-preset-airbnb).
 
+## Installation
+
+`yarn add --dev @zapier/babel-preset-zapier`
+
 ## Features
 
 - Uses [`babel-preset-env`](https://github.com/babel/babel/tree/master/packages/babel-preset-env)
