@@ -17,16 +17,7 @@ describe('babel-preset-zapier', () => {
     delete process.env.BABEL_ENV;
   });
 
-  // Skip this test until `zapier/zapier` can handle ES modules natively
-  xit("doesn't compile ES modules to commonjs by default", () => {
-    const code = `
-      import Foo from 'foo';
-    `;
-
-    expect(transform(code)).toMatchSnapshot();
-  });
-
-  it('compiles to commonjs modules', () => {
+  it("doesn't compile ES modules to commonjs", () => {
     const code = `
       import Foo from 'foo';
     `;
@@ -87,6 +78,24 @@ describe('babel-preset-zapier', () => {
           className: PropTypes.string
         };
       `;
+
+      expect(transform(code)).toMatchSnapshot();
+    });
+  });
+
+  describe('when on test env', () => {
+    beforeEach(() => {
+      process.env.BABEL_ENV = 'test';
+    });
+
+    afterEach(() => {
+      delete process.env.BABEL_ENV;
+    });
+
+    it('compiles to commonjs modules in test environment', () => {
+      const code = `
+      import Foo from 'foo';
+    `;
 
       expect(transform(code)).toMatchSnapshot();
     });
