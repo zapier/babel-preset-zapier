@@ -36,7 +36,7 @@
     "@babel/preset-react": "^7.0.0",
     "@zapier/browserslist-config-zapier": "^1.0.2",
     "babel-plugin-dynamic-import-node": "^2.1.0",
-    "babel-plugin-emotion": "10.0.0-beta.5",
+    "babel-plugin-emotion": "^10.0.0",
     "babel-plugin-graphql-tag": "^1.6.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.10"
   },
