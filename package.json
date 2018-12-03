@@ -15,7 +15,8 @@
   "author": "Vitor Balocco <vitor.balocco@zapier.com>",
   "scripts": {
     "lint": "eslint .",
-    "test": "jest"
+    "test": "jest",
+    "prepublish": "yarn lint && yarn test"
   },
   "devDependencies": {
     "@babel/core": "^7.1.0",

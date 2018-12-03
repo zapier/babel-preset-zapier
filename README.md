@@ -18,3 +18,8 @@ A babel preset for Zapier. Heavily inspired by [`babel-preset-airbnb`](https://g
 - Configures `emotion` to add filepaths to classNames by default.
 
 Note that `babel-preset-zapier` currently does not support babel versions lower than v7.
+
+## Publishing / Deploying
+
+- Use [semantic versioning](https://semver.org/) for deciding how to bump versions.
+- `npm publish` to publish the new version to NPM.
