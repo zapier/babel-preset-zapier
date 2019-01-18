@@ -52,7 +52,7 @@ describe('babel-preset-zapier', () => {
     expect(transform(code)).toMatchSnapshot();
   });
 
-  it('doesnt strip proptypes when not in prod env', () => {
+  it("doesn't strip proptypes when not in prod env", () => {
     const code = `
       const Baz = (props) => (
         <div {...props} />
