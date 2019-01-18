@@ -1,4 +1,3 @@
-/* eslint-env jest */
 const babel = require('@babel/core');
 
 const transform = code => {
