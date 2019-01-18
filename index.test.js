@@ -112,4 +112,27 @@ describe('babel-preset-zapier', () => {
       expect(config).toMatchSnapshot();
     });
   });
+
+  describe('when passing using the target option', () => {
+    const tetstConfig = options =>
+      require('./index')(
+        {
+          assertVersion: () => true,
+          cache: {
+            using: () => {},
+          },
+        },
+        options
+      );
+
+    it('produce the appropriate configuration for browser', () => {
+      const config = tetstConfig({ target: 'browser' });
+      expect(config).toMatchSnapshot();
+    });
+
+    it('produce the appropriate configuration for node', () => {
+      const config = tetstConfig({ target: 'node' });
+      expect(config).toMatchSnapshot();
+    });
+  });
 });
