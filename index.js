@@ -30,7 +30,8 @@ module.exports = declare(api => {
       // Need to force-transform classes due to an Edge bug. See: https://github.com/zapier/zapier/pull/21319#issuecomment-437871079
       // Once the fix for this lands on Edge, we can get rid of this (but make sure to test in older versions of Edge first!).
       '@babel/plugin-transform-classes',
-    ],
+      env === 'test' && 'babel-plugin-require-context-hook',
+    ].filter(Boolean),
     env: {
       development: {
         plugins: [
