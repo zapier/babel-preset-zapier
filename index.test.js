@@ -8,6 +8,14 @@ const transform = code => {
   }).code;
 };
 
+const tetstConfig = () =>
+  require('./index')({
+    assertVersion: () => true,
+    cache: {
+      using: () => {},
+    },
+  });
+
 describe('babel-preset-zapier', () => {
   beforeEach(() => {
     process.env.BABEL_ENV = 'development';
@@ -98,6 +106,11 @@ describe('babel-preset-zapier', () => {
     `;
 
       expect(transform(code)).toMatchSnapshot();
+    });
+
+    it('produce the appropriate configuration', () => {
+      const config = tetstConfig();
+      expect(config).toMatchSnapshot();
     });
   });
 });
