@@ -1,4 +1,3 @@
-/* eslint-env jest */
 const babel = require('@babel/core');
 
 const transform = code => {
@@ -53,7 +52,7 @@ describe('babel-preset-zapier', () => {
     expect(transform(code)).toMatchSnapshot();
   });
 
-  it('doesnt strip proptypes when not in prod env', () => {
+  it("doesn't strip proptypes when not in prod env", () => {
     const code = `
       const Baz = (props) => (
         <div {...props} />
@@ -110,6 +109,29 @@ describe('babel-preset-zapier', () => {
 
     it('produce the appropriate configuration', () => {
       const config = tetstConfig();
+      expect(config).toMatchSnapshot();
+    });
+  });
+
+  describe('given a target option', () => {
+    const testConfig = options =>
+      require('./index')(
+        {
+          assertVersion: () => true,
+          cache: {
+            using: () => {},
+          },
+        },
+        options
+      );
+
+    it('produces the appropriate configuration for browser', () => {
+      const config = testConfig({ target: 'browser' });
+      expect(config).toMatchSnapshot();
+    });
+
+    it('produces the appropriate configuration for node', () => {
+      const config = testConfig({ target: 'node' });
       expect(config).toMatchSnapshot();
     });
   });

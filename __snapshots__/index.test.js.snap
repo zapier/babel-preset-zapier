@@ -4,12 +4,105 @@ exports[`babel-preset-zapier compiles JSX 1`] = `"React.createElement(Foo, null)
 
 exports[`babel-preset-zapier doesn't compile ES modules to commonjs 1`] = `"import Foo from 'foo';"`;
 
-exports[`babel-preset-zapier doesnt strip proptypes when not in prod env 1`] = `
+exports[`babel-preset-zapier doesn't strip proptypes when not in prod env 1`] = `
 "const Baz = props => React.createElement(\\"div\\", props);
 
 Baz.propTypes = {
   className: PropTypes.string
 };"
+`;
+
+exports[`babel-preset-zapier given a target option produces the appropriate configuration for browser 1`] = `
+Object {
+  "env": Object {
+    "development": Object {
+      "plugins": Array [
+        Array [
+          "emotion",
+          Object {
+            "autoLabel": true,
+            "labelFormat": "[filename]--[local]",
+            "sourceMap": true,
+          },
+        ],
+      ],
+    },
+    "production": Object {
+      "plugins": Array [
+        "transform-react-remove-prop-types",
+        "graphql-tag",
+      ],
+    },
+    "test": Object {
+      "plugins": Array [],
+    },
+  },
+  "plugins": Array [
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-classes",
+  ],
+  "presets": Array [
+    Array [
+      "@babel/preset-env",
+      Object {
+        "modules": false,
+        "targets": Object {
+          "browsers": Array [
+            "last 4 Chrome major versions",
+            "last 4 Firefox major versions",
+            "last 2 Safari major versions",
+            "last 3 Edge major versions",
+            "last 4 ChromeAndroid major versions",
+            "last 2 iOS major versions",
+          ],
+        },
+      },
+    ],
+    "@babel/preset-react",
+    "@babel/preset-flow",
+  ],
+}
+`;
+
+exports[`babel-preset-zapier given a target option produces the appropriate configuration for node 1`] = `
+Object {
+  "env": Object {
+    "development": Object {
+      "plugins": Array [],
+    },
+    "production": Object {
+      "plugins": Array [
+        "transform-react-remove-prop-types",
+        "graphql-tag",
+      ],
+    },
+    "test": Object {
+      "plugins": Array [
+        "dynamic-import-node",
+      ],
+    },
+  },
+  "plugins": Array [
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-proposal-class-properties",
+  ],
+  "presets": Array [
+    Array [
+      "@babel/preset-env",
+      Object {
+        "modules": "commonjs",
+        "targets": Object {
+          "node": "current",
+        },
+      },
+    ],
+    "@babel/preset-react",
+    "@babel/preset-flow",
+  ],
+}
 `;
 
 exports[`babel-preset-zapier strips flow annotations 1`] = `"function greet(name) {}"`;
@@ -40,9 +133,7 @@ Object {
       ],
     },
     "test": Object {
-      "plugins": Array [
-        "dynamic-import-node",
-      ],
+      "plugins": Array [],
     },
   },
   "plugins": Array [
