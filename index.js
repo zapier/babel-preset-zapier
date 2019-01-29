@@ -33,7 +33,7 @@ const configurePresets = (env, target) =>
               },
       },
     ],
-    target === 'browser' && '@babel/preset-react',
+    '@babel/preset-react',
     '@babel/preset-flow',
   ]);
 
@@ -62,13 +62,10 @@ const configureEnv = (env, target) => ({
     ]),
   },
   test: {
-    plugins: compact([target === 'browser' && 'dynamic-import-node']),
+    plugins: compact([target === 'node' && 'dynamic-import-node']),
   },
   production: {
-    plugins: compact([
-      target === 'browser' && 'transform-react-remove-prop-types',
-      'graphql-tag',
-    ]),
+    plugins: compact(['transform-react-remove-prop-types', 'graphql-tag']),
   },
 });
 

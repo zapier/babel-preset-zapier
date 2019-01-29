@@ -12,13 +12,7 @@ Baz.propTypes = {
 };"
 `;
 
-exports[`babel-preset-zapier strips flow annotations 1`] = `"function greet(name) {}"`;
-
-exports[`babel-preset-zapier when on production env strips proptypes when in prod env 1`] = `"const Baz = props => React.createElement(\\"div\\", props);"`;
-
-exports[`babel-preset-zapier when on test env compiles to commonjs modules in test environment 1`] = `"import Foo from 'foo';"`;
-
-exports[`babel-preset-zapier when passing using the target option produce the appropriate configuration for browser 1`] = `
+exports[`babel-preset-zapier given a target option produces the appropriate configuration for browser 1`] = `
 Object {
   "env": Object {
     "development": Object {
@@ -40,9 +34,7 @@ Object {
       ],
     },
     "test": Object {
-      "plugins": Array [
-        "dynamic-import-node",
-      ],
+      "plugins": Array [],
     },
   },
   "plugins": Array [
@@ -74,7 +66,7 @@ Object {
 }
 `;
 
-exports[`babel-preset-zapier when passing using the target option produce the appropriate configuration for node 1`] = `
+exports[`babel-preset-zapier given a target option produces the appropriate configuration for node 1`] = `
 Object {
   "env": Object {
     "development": Object {
@@ -82,11 +74,14 @@ Object {
     },
     "production": Object {
       "plugins": Array [
+        "transform-react-remove-prop-types",
         "graphql-tag",
       ],
     },
     "test": Object {
-      "plugins": Array [],
+      "plugins": Array [
+        "dynamic-import-node",
+      ],
     },
   },
   "plugins": Array [
@@ -104,7 +99,14 @@ Object {
         },
       },
     ],
+    "@babel/preset-react",
     "@babel/preset-flow",
   ],
 }
 `;
+
+exports[`babel-preset-zapier strips flow annotations 1`] = `"function greet(name) {}"`;
+
+exports[`babel-preset-zapier when on production env strips proptypes when in prod env 1`] = `"const Baz = props => React.createElement(\\"div\\", props);"`;
+
+exports[`babel-preset-zapier when on test env compiles to commonjs modules in test environment 1`] = `"import Foo from 'foo';"`;

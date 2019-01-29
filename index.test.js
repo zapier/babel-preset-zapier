@@ -113,8 +113,8 @@ describe('babel-preset-zapier', () => {
     });
   });
 
-  describe('when passing using the target option', () => {
-    const tetstConfig = options =>
+  describe('given a target option', () => {
+    const testConfig = options =>
       require('./index')(
         {
           assertVersion: () => true,
@@ -125,13 +125,13 @@ describe('babel-preset-zapier', () => {
         options
       );
 
-    it('produce the appropriate configuration for browser', () => {
-      const config = tetstConfig({ target: 'browser' });
+    it('produces the appropriate configuration for browser', () => {
+      const config = testConfig({ target: 'browser' });
       expect(config).toMatchSnapshot();
     });
 
-    it('produce the appropriate configuration for node', () => {
-      const config = tetstConfig({ target: 'node' });
+    it('produces the appropriate configuration for node', () => {
+      const config = testConfig({ target: 'node' });
       expect(config).toMatchSnapshot();
     });
   });
