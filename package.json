@@ -1,6 +1,6 @@
 {
   "name": "@zapier/babel-preset-zapier",
-  "version": "5.2.0",
+  "version": "5.2.1",
   "description": "A babel preset for Zapier",
   "main": "index.js",
   "repository": {
