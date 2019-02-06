@@ -62,7 +62,7 @@ const configureEnv = (env, target) => ({
     ]),
   },
   test: {
-    plugins: compact([target === 'node' && 'dynamic-import-node']),
+    plugins: ['dynamic-import-node'],
   },
   production: {
     plugins: ['transform-react-remove-prop-types', 'graphql-tag'],
