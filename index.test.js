@@ -1,9 +1,10 @@
 const babel = require('@babel/core');
 
-const transform = code => {
+const transform = (code, filename = 'foo.js') => {
   return babel.transformSync(code, {
     configFile: require.resolve('./index'),
     babelrc: false, // don't use .babelrc
+    filename,
   }).code;
 };
 
@@ -64,6 +65,31 @@ describe('babel-preset-zapier', () => {
     `;
 
     expect(transform(code)).toMatchSnapshot();
+  });
+
+  it('transpiles TS', () => {
+    const code = `
+      const x: number = 7;
+      type Foo = string | any;
+    `;
+
+    expect(transform(code, 'foo.ts')).toMatchSnapshot();
+  });
+
+  it('transpiles TSX', () => {
+    const code = `
+      import * as React from 'react';
+      
+      interface IProps {
+        foo: string;
+      }
+
+      export function Thing(props: IProps) {
+        return <h1>{props.foo}</h1>;
+      }
+    `;
+
+    expect(transform(code, 'foo.tsx')).toMatchSnapshot();
   });
 
   describe('when on production env', () => {

@@ -39,6 +39,39 @@ Object {
       ],
     },
   },
+  "overrides": Array [
+    Object {
+      "presets": Array [
+        Array [
+          "@babel/preset-env",
+          Object {
+            "modules": false,
+            "targets": Object {
+              "browsers": Array [
+                "last 4 Chrome major versions",
+                "last 4 Firefox major versions",
+                "last 2 Safari major versions",
+                "last 3 Edge major versions",
+                "last 4 ChromeAndroid major versions",
+                "last 2 iOS major versions",
+              ],
+            },
+          },
+        ],
+        "@babel/preset-react",
+        Array [
+          "@babel/typescript",
+          Object {
+            "allExtensions": true,
+            "isTSX": true,
+          },
+        ],
+      ],
+      "test": Array [
+        "*.ts",
+      ],
+    },
+  ],
   "plugins": Array [
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-proposal-object-rest-spread",
@@ -86,6 +119,32 @@ Object {
       ],
     },
   },
+  "overrides": Array [
+    Object {
+      "presets": Array [
+        Array [
+          "@babel/preset-env",
+          Object {
+            "modules": "commonjs",
+            "targets": Object {
+              "node": "current",
+            },
+          },
+        ],
+        "@babel/preset-react",
+        Array [
+          "@babel/typescript",
+          Object {
+            "allExtensions": true,
+            "isTSX": true,
+          },
+        ],
+      ],
+      "test": Array [
+        "*.ts",
+      ],
+    },
+  ],
   "plugins": Array [
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-proposal-object-rest-spread",
@@ -108,6 +167,15 @@ Object {
 `;
 
 exports[`babel-preset-zapier strips flow annotations 1`] = `"function greet(name) {}"`;
+
+exports[`babel-preset-zapier transpiles TS 1`] = `"const x = 7;"`;
+
+exports[`babel-preset-zapier transpiles TSX 1`] = `
+"import * as React from 'react';
+export function Thing(props) {
+  return React.createElement(\\"h1\\", null, props.foo);
+}"
+`;
 
 exports[`babel-preset-zapier when on production env strips proptypes when in prod env 1`] = `"const Baz = props => React.createElement(\\"div\\", props);"`;
 
@@ -140,6 +208,39 @@ Object {
       ],
     },
   },
+  "overrides": Array [
+    Object {
+      "presets": Array [
+        Array [
+          "@babel/preset-env",
+          Object {
+            "modules": "commonjs",
+            "targets": Object {
+              "browsers": Array [
+                "last 4 Chrome major versions",
+                "last 4 Firefox major versions",
+                "last 2 Safari major versions",
+                "last 3 Edge major versions",
+                "last 4 ChromeAndroid major versions",
+                "last 2 iOS major versions",
+              ],
+            },
+          },
+        ],
+        "@babel/preset-react",
+        Array [
+          "@babel/typescript",
+          Object {
+            "allExtensions": true,
+            "isTSX": true,
+          },
+        ],
+      ],
+      "test": Array [
+        "*.ts",
+      ],
+    },
+  ],
   "plugins": Array [
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-proposal-object-rest-spread",

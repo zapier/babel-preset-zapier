@@ -37,6 +37,25 @@ const configurePresets = (env, target) =>
     '@babel/preset-flow',
   ]);
 
+const configureOverrides = (env, target) =>
+  compact([
+    {
+      test: ['*.ts'],
+      presets: [
+        ...configurePresets(env, target).filter(
+          preset => preset !== '@babel/preset-flow'
+        ),
+        [
+          '@babel/typescript',
+          {
+            allExtensions: true,
+            isTSX: true,
+          },
+        ],
+      ],
+    },
+  ]);
+
 const configurePlugins = (env, target) =>
   compact([
     '@babel/plugin-syntax-dynamic-import',
@@ -80,6 +99,7 @@ module.exports = declare((api, options) => {
 
   return {
     presets: configurePresets(env, target),
+    overrides: configureOverrides(env, target),
     plugins: configurePlugins(env, target),
     env: configureEnv(env, target),
   };
