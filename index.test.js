@@ -92,6 +92,41 @@ describe('babel-preset-zapier', () => {
     expect(transform(code, 'foo.tsx')).toMatchSnapshot();
   });
 
+  fit('transpiles TSX with isolateComponent pragma', () => {
+    const code = `
+      // @jsx isolateComponent
+      
+      interface IProps {
+        foo: string;
+      }
+
+      export function Thing(props: IProps) {
+        return <h1>{props.foo}</h1>;
+      }
+    `;
+
+    expect(transform(code, 'foo.tsx')).toMatchSnapshot();
+  });
+
+  fit('transpiles TSX with emotion jsx pragma', () => {
+    const code = `
+      /** @jsx jsx */
+      import { css, jsx } from '@emotion/core';
+      const styles = css({
+        display: 'block',
+      });
+      interface IProps {
+        foo: string;
+      }
+
+      export function Thing(props: IProps) {
+        return <h1 css={styles}>{props.foo}</h1>;
+      }
+    `;
+
+    expect(transform(code, 'foo.tsx')).toMatchSnapshot();
+  });
+
   describe('when on production env', () => {
     beforeEach(() => {
       process.env.BABEL_ENV = 'production';
