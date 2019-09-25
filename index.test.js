@@ -92,7 +92,7 @@ describe('babel-preset-zapier', () => {
     expect(transform(code, 'foo.tsx')).toMatchSnapshot();
   });
 
-  fit('transpiles TSX with isolateComponent pragma', () => {
+  it('transpiles TSX with isolateComponent pragma', () => {
     const code = `
       // @jsx isolateComponent
       
@@ -108,7 +108,7 @@ describe('babel-preset-zapier', () => {
     expect(transform(code, 'foo.tsx')).toMatchSnapshot();
   });
 
-  fit('transpiles TSX with emotion jsx pragma', () => {
+  it('transpiles TSX with emotion jsx pragma', () => {
     const code = `
       /** @jsx jsx */
       import { css, jsx } from '@emotion/core';
