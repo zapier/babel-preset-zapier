@@ -8,6 +8,12 @@ const transform = (code, filename = 'foo.js') => {
   }).code;
 };
 
+// For testing purposes, we are just using the production version
+// of react-hot-loader/babel so we don't get extra output in our files
+jest.mock('react-hot-loader/babel', () =>
+  require('react-hot-loader/dist/babel.production.min.js')
+);
+
 const tetstConfig = () =>
   require('./index')({
     assertVersion: () => true,
