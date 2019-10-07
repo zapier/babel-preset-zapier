@@ -65,6 +65,7 @@ const configurePlugins = (env, target) =>
     // Once the fix for this lands on Edge, we can get rid of this (but make sure to test in older versions of Edge first!).
     target === 'browser' && '@babel/plugin-transform-classes',
     env === 'test' && 'babel-plugin-require-context-hook',
+    env === 'development' && 'react-hot-loader/babel',
   ]);
 
 const configureEnv = (env, target) => ({
