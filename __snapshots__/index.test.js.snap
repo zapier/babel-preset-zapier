@@ -274,6 +274,7 @@ Object {
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-transform-classes",
     "babel-plugin-require-context-hook",
+    "react-hot-loader/babel",
   ],
   "presets": Array [
     Array [
