@@ -40,7 +40,7 @@ const configurePresets = (env, target) =>
 const configureOverrides = (env, target) =>
   compact([
     {
-      test: ['*.ts'],
+      test: /\.tsx?$/,
       presets: [
         ...configurePresets(env, target).filter(
           preset => preset !== '@babel/preset-flow'
