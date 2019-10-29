@@ -67,9 +67,7 @@ Object {
           },
         ],
       ],
-      "test": Array [
-        "*.ts",
-      ],
+      "test": /\\\\\\.tsx\\?\\$/,
     },
   ],
   "plugins": Array [
@@ -141,9 +139,7 @@ Object {
           },
         ],
       ],
-      "test": Array [
-        "*.ts",
-      ],
+      "test": /\\\\\\.tsx\\?\\$/,
     },
   ],
   "plugins": Array [
@@ -188,7 +184,7 @@ const styles = process.env.NODE_ENV === \\"production\\" ? {
 } : {
   name: \\"tbsp7d-foo--styles\\",
   styles: \\"display:block;label:foo--styles;\\",
-  map: \\"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZvby50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR3FCIiwiZmlsZSI6ImZvby50c3giLCJzb3VyY2VzQ29udGVudCI6WyJcbiAgICAgIC8qKiBAanN4IGpzeCAqL1xuICAgICAgaW1wb3J0IHsgY3NzLCBqc3ggfSBmcm9tICdAZW1vdGlvbi9jb3JlJztcbiAgICAgIGNvbnN0IHN0eWxlcyA9IGNzcyh7XG4gICAgICAgIGRpc3BsYXk6ICdibG9jaycsXG4gICAgICB9KTtcbiAgICAgIGludGVyZmFjZSBJUHJvcHMge1xuICAgICAgICBmb286IHN0cmluZztcbiAgICAgIH1cblxuICAgICAgZXhwb3J0IGZ1bmN0aW9uIFRoaW5nKHByb3BzOiBJUHJvcHMpIHtcbiAgICAgICAgcmV0dXJuIDxoMSBjc3M9e3N0eWxlc30+e3Byb3BzLmZvb308L2gxPjtcbiAgICAgIH1cbiAgICAiXX0= */\\"
+  map: \\"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZvby50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR3FCIiwiZmlsZSI6ImZvby50c3giLCJzb3VyY2VzQ29udGVudCI6WyJcbiAgICAgIC8qKiBAanN4IGpzeCAqL1xuICAgICAgaW1wb3J0IHsgY3NzLCBqc3ggfSBmcm9tICdAZW1vdGlvbi9jb3JlJztcbiAgICAgIGNvbnN0IHN0eWxlcyA9IGNzcyh7XG4gICAgICAgIGRpc3BsYXk6ICdibG9jaycsXG4gICAgICB9KTtcblxuICAgICAgaW50ZXJmYWNlIElQcm9wcyB7XG4gICAgICAgIGZvbzogbnVtYmVyO1xuICAgICAgfVxuXG4gICAgICBleHBvcnQgZnVuY3Rpb24gVGhpbmcocHJvcHM6IElQcm9wcykge1xuICAgICAgICByZXR1cm4gPGgxIGNzcz17c3R5bGVzfT57cHJvcHMuZm9vIGFzIHN0cmluZ308L2gxPjtcbiAgICAgIH1cbiAgICAiXX0= */\\"
 };
 export function Thing(props) {
   return jsx(\\"h1\\", {
@@ -263,9 +259,7 @@ Object {
           },
         ],
       ],
-      "test": Array [
-        "*.ts",
-      ],
+      "test": /\\\\\\.tsx\\?\\$/,
     },
   ],
   "plugins": Array [

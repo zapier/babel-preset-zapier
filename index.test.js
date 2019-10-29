@@ -87,11 +87,11 @@ describe('babel-preset-zapier', () => {
       import * as React from 'react';
       
       interface IProps {
-        foo: string;
+        foo: number;
       }
 
       export function Thing(props: IProps) {
-        return <h1>{props.foo}</h1>;
+        return <h1>{props.foo as string}</h1>;
       }
     `;
 
@@ -103,11 +103,11 @@ describe('babel-preset-zapier', () => {
       // @jsx isolateComponent
       
       interface IProps {
-        foo: string;
+        foo: number;
       }
 
       export function Thing(props: IProps) {
-        return <h1>{props.foo}</h1>;
+        return <h1>{props.foo as string}</h1>;
       }
     `;
 
@@ -121,12 +121,13 @@ describe('babel-preset-zapier', () => {
       const styles = css({
         display: 'block',
       });
+
       interface IProps {
-        foo: string;
+        foo: number;
       }
 
       export function Thing(props: IProps) {
-        return <h1 css={styles}>{props.foo}</h1>;
+        return <h1 css={styles}>{props.foo as string}</h1>;
       }
     `;
 
