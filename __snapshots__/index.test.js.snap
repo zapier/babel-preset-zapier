@@ -164,6 +164,21 @@ Object {
 }
 `;
 
+exports[`babel-preset-zapier parses nullish coalescing for JS 1`] = `"const foo = undefined !== null && undefined !== void 0 ? undefined : 'default';"`;
+
+exports[`babel-preset-zapier parses optional chaining 1`] = `
+"var _tester$bar, _tester$bar$baz;
+
+const tester = {
+  bar: {
+    baz: {
+      testing: 'this'
+    }
+  }
+};
+const foo = tester === null || tester === void 0 ? void 0 : (_tester$bar = tester.bar) === null || _tester$bar === void 0 ? void 0 : (_tester$bar$baz = _tester$bar.baz) === null || _tester$bar$baz === void 0 ? void 0 : _tester$bar$baz.testing;"
+`;
+
 exports[`babel-preset-zapier strips flow annotations 1`] = `"function greet(name) {}"`;
 
 exports[`babel-preset-zapier transpiles TS 1`] = `"const x = 7;"`;

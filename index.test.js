@@ -59,6 +59,29 @@ describe('babel-preset-zapier', () => {
     expect(transform(code)).toMatchSnapshot();
   });
 
+  it('parses optional chaining', () => {
+    const code = `
+      const tester = {
+        bar: {
+          baz: {
+            testing: 'this'
+          }
+        }
+      }
+      const foo = tester?.bar?.baz?.testing;
+    `;
+
+    expect(transform(code)).toMatchSnapshot();
+  });
+
+  it('parses nullish coalescing for JS', () => {
+    const code = `
+      const foo = undefined ?? 'default';
+    `;
+
+    expect(transform(code)).toMatchSnapshot();
+  });
+
   it("doesn't strip proptypes when not in prod env", () => {
     const code = `
       const Baz = (props) => (
