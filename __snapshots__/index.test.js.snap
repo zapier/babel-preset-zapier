@@ -20,7 +20,6 @@ Object {
         Array [
           "emotion",
           Object {
-            "autoLabel": true,
             "labelFormat": "[filename]--[local]",
             "sourceMap": true,
           },
@@ -227,7 +226,6 @@ Object {
         Array [
           "emotion",
           Object {
-            "autoLabel": true,
             "labelFormat": "[filename]--[local]",
             "sourceMap": true,
           },

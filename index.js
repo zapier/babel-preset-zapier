@@ -75,7 +75,6 @@ const configureEnv = (env, target) => ({
       target === 'browser' && [
         'emotion',
         {
-          autoLabel: true,
           labelFormat: '[filename]--[local]',
           sourceMap: true,
         },
