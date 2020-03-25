@@ -12,24 +12,6 @@ Baz.propTypes = {
 };"
 `;
 
-exports[`babel-preset-zapier emotion testing emotion 1`] = `
-"/** @jsx jsx */
-import { css, jsx } from '@emotion/core';
-const styles = process.env.NODE_ENV === \\"production\\" ? {
-  name: \\"tbsp7d-foo--styles\\",
-  styles: \\"display:block;label:foo--styles;\\"
-} : {
-  name: \\"tbsp7d-foo--styles\\",
-  styles: \\"display:block;label:foo--styles;\\",
-  map: \\"/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZvby50c3giXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR3FCIiwiZmlsZSI6ImZvby50c3giLCJzb3VyY2VzQ29udGVudCI6WyJcbiAgICAgIC8qKiBAanN4IGpzeCAqL1xuICAgICAgaW1wb3J0IHsgY3NzLCBqc3ggfSBmcm9tICdAZW1vdGlvbi9jb3JlJztcbiAgICAgIGNvbnN0IHN0eWxlcyA9IGNzcyh7XG4gICAgICAgIGRpc3BsYXk6ICdibG9jaycsXG4gICAgICB9KTtcblxuICAgICAgaW50ZXJmYWNlIElQcm9wcyB7XG4gICAgICAgIGZvbzogbnVtYmVyO1xuICAgICAgfVxuXG4gICAgICBleHBvcnQgZnVuY3Rpb24gVGhpbmcocHJvcHM6IElQcm9wcykge1xuICAgICAgICByZXR1cm4gPGgxIGNzcz17c3R5bGVzfT57cHJvcHMuZm9vIGFzIHN0cmluZ308L2gxPjtcbiAgICAgIH1cbiAgICAiXX0= */\\"
-};
-export function Thing(props) {
-  return jsx(\\"h1\\", {
-    css: styles
-  }, props.foo);
-}"
-`;
-
 exports[`babel-preset-zapier given a target option produces the appropriate configuration for browser 1`] = `
 Object {
   "env": Object {
