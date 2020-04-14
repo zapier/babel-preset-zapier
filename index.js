@@ -67,20 +67,18 @@ const configurePlugins = (env, target) =>
     env === 'test' && 'babel-plugin-require-context-hook',
     // See: https://github.com/zapier/zapier/pull/31809#discussion_r332164627
     'react-hot-loader/babel',
+    target === 'browser' && [
+      'emotion',
+      {
+        // autoLabel for all environments
+        autoLabel: true,
+        labelFormat: '[filename]--[local]',
+        sourceMap: env === 'development',
+      },
+    ]
   ]);
 
 const configureEnv = (env, target) => ({
-  development: {
-    plugins: compact([
-      target === 'browser' && [
-        'emotion',
-        {
-          labelFormat: '[filename]--[local]',
-          sourceMap: true,
-        },
-      ],
-    ]),
-  },
   test: {
     plugins: ['dynamic-import-node'],
   },

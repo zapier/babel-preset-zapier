@@ -15,17 +15,6 @@ Baz.propTypes = {
 exports[`babel-preset-zapier given a target option produces the appropriate configuration for browser 1`] = `
 Object {
   "env": Object {
-    "development": Object {
-      "plugins": Array [
-        Array [
-          "emotion",
-          Object {
-            "labelFormat": "[filename]--[local]",
-            "sourceMap": true,
-          },
-        ],
-      ],
-    },
     "production": Object {
       "plugins": Array [
         "transform-react-remove-prop-types",
@@ -75,6 +64,14 @@ Object {
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-transform-classes",
     "react-hot-loader/babel",
+    Array [
+      "emotion",
+      Object {
+        "autoLabel": true,
+        "labelFormat": "[filename]--[local]",
+        "sourceMap": true,
+      },
+    ],
   ],
   "presets": Array [
     Array [
@@ -102,9 +99,6 @@ Object {
 exports[`babel-preset-zapier given a target option produces the appropriate configuration for node 1`] = `
 Object {
   "env": Object {
-    "development": Object {
-      "plugins": Array [],
-    },
     "production": Object {
       "plugins": Array [
         "transform-react-remove-prop-types",
@@ -221,17 +215,6 @@ exports[`babel-preset-zapier when on test env compiles to commonjs modules in te
 exports[`babel-preset-zapier when on test env produce the appropriate configuration 1`] = `
 Object {
   "env": Object {
-    "development": Object {
-      "plugins": Array [
-        Array [
-          "emotion",
-          Object {
-            "labelFormat": "[filename]--[local]",
-            "sourceMap": true,
-          },
-        ],
-      ],
-    },
     "production": Object {
       "plugins": Array [
         "transform-react-remove-prop-types",
@@ -282,6 +265,14 @@ Object {
     "@babel/plugin-transform-classes",
     "babel-plugin-require-context-hook",
     "react-hot-loader/babel",
+    Array [
+      "emotion",
+      Object {
+        "autoLabel": true,
+        "labelFormat": "[filename]--[local]",
+        "sourceMap": false,
+      },
+    ],
   ],
   "presets": Array [
     Array [
