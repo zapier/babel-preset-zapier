@@ -78,7 +78,7 @@ const configurePlugins = (env, target) =>
     ]
   ]);
 
-const configureEnv = (env, target) => ({
+const configureEnv = () => ({
   test: {
     plugins: ['dynamic-import-node'],
   },
