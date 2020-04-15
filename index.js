@@ -2,7 +2,7 @@ const buildTargets = require('@zapier/browserslist-config-zapier');
 const declare = require('@babel/helper-plugin-utils').declare;
 const invariant = require('invariant');
 
-const compact = xs => xs.filter(Boolean);
+const compact = (xs) => xs.filter(Boolean);
 
 const validateTargetOption = (target = 'browser') => {
   const validTargets = ['browser', 'node'];
@@ -43,13 +43,14 @@ const configureOverrides = (env, target) =>
       test: /\.tsx?$/,
       presets: [
         ...configurePresets(env, target).filter(
-          preset => preset !== '@babel/preset-flow'
+          (preset) => preset !== '@babel/preset-flow'
         ),
         [
-          '@babel/typescript',
+          '@babel/preset-typescript',
           {
             allExtensions: true,
             isTSX: true,
+            onlyRemoveTypeImports: true,
           },
         ],
       ],

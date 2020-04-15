@@ -137,6 +137,52 @@ describe('babel-preset-zapier', () => {
     expect(transform(code, 'foo.tsx')).toMatchSnapshot();
   });
 
+  it('transpiles TSX with type keyword', () => {
+    const code = `
+      import type { Test } from './Test';
+      export type { Test };
+    `;
+
+    expect(transform(code, 'foo.tsx')).toMatchSnapshot();
+  });
+
+  it('transpiles object rest spread', () => {
+    const code = `
+      const foo = { bar: 'baz' };
+      const test = { ...foo };
+    `;
+
+    expect(transform(code, 'foo.ts')).toMatchSnapshot();
+  });
+
+  it('transpiles classes', () => {
+    const code = `
+      class Test {
+        constructor(name) {
+          this.name = name;
+        }
+      
+        logger () {
+          console.log("Hello", this.name);
+        }
+      }
+    `;
+    expect(transform(code, 'foo.ts')).toMatchSnapshot();
+  });
+
+  it('transpiles class properties', () => {
+    const code = `
+      class Bork {
+        static a = 'foo';
+        static b;
+    
+        x = 'bar';
+        y;
+      }
+    `;
+    expect(transform(code, 'foo.ts')).toMatchSnapshot();
+  });
+
   it('transpiles TSX with emotion jsx pragma', () => {
     const code = `
       /** @jsx jsx */
@@ -205,7 +251,7 @@ describe('babel-preset-zapier', () => {
   });
 
   describe('given a target option', () => {
-    const testConfig = options =>
+    const testConfig = (options) =>
       require('./index')(
         {
           assertVersion: () => true,
